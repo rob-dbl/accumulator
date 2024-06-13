@@ -18,6 +18,7 @@ The picture below represents the basic structure of the accumulator. It is compo
 - A register used for accumulation.
 
 ![Accumulator structure](/others/schematic.png)
+<img src="https://github.com/rob-dbl/accumulator/blob/main/others/schematic.png)" width="48">
 
 The unit is enabled when the 'acc_enable' signal is set.
 Selection of the function to perform (simple sum or successive accumulation of operands) is controlled by the 'accumulate' pin. When it is not set, the unit will simply give the sum of the two operands A and B; otherwise, the output register will be selected as operand and sum to A, as long as the 'accumulate' is set. The result of the operation will be available at the beginning of the successive clock cycle.

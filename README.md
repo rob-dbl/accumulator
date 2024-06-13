@@ -3,44 +3,27 @@
 ## Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Contributing](../CONTRIBUTING.md)
+- [Structure](#structure)
+- [Testbench](#testbench)
 
 ## About <a name = "about"></a>
 
 This repository contains a simple structural accumulator described and tested using VHDL. Simulation was carried out using GHDL. Main purpose of the project was to regain practice with VHDL using free EDA tools for basic analysis and verification.
 
-## Getting Started <a name = "getting_started"></a>
+## Structure and functionality<a name = "structure"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+The picture below represents the basic structure of the accumulator. It is composed of three main blocks:
+- A multiplexer, for selection of the source;
+- A simple adder (currently, a ripple-carry adder);
+- A register used for accumulation.
 
-### Prerequisites
+![Accumulator structure](/others/schematic.png)
 
-What things you need to install the software and how to install them.
+The unit is enabled when the 'acc_enable' signal is set.
+Selection of the function to perform (simple sum or successive accumulation of operands) is controlled by the 'accumulate' pin. When it is not set, the unit will simply give the sum of the two operands A and B; otherwise, the output register will be selected as operand and sum to A, as long as the 'accumulate' is set. The result of the operation will be available at the beginning of the successive clock cycle.
 
-```
-Give examples
-```
+## Testbench<a name = "testbench"></a>
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Usage <a name = "usage"></a>
-
-Add notes about how to use the system.
+The testbench is written in VHDL and includes, other than the unit under test (UUT), a clock generation module that runs independently to the test bench. The test procedure is described as a process where proper stimuli are applied to the UUT inputs and the output is evaluated.
+Waves were written into an output file 'wave.ghw', that is readable by post-simulation tools such as GTKwave.
+The commands used for analysis, elaboration and simulation were all included into a script file 'simulate.sh' to ease and speed-up the simulation process.

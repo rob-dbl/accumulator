@@ -16,6 +16,7 @@ The picture below represents the basic structure of the accumulator. It is compo
 - A multiplexer, for selection of the source;
 - A simple adder (currently, a ripple-carry adder);
 - A register used for accumulation.
+
 ![Accumulator structure](/others/schematic.png)
 
 The unit is enabled when the 'acc_enable' signal is set.

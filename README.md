@@ -1,4 +1,4 @@
-# Project Title
+# Simple Accumulator
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@
 
 ## About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This repository contains a simple structural accumulator described and tested using VHDL. Simulation was carried out using GHDL. Main purpose of the project was to regain practice with VHDL using free EDA tools for basic analysis and verification.
 
 ## Getting Started <a name = "getting_started"></a>
 

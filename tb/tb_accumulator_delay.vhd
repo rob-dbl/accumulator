@@ -36,7 +36,7 @@ architecture bhv of tb_acc is
 begin
 
     -- Instantiation of the components
-    clk_gen_i: clk_gen generic map( 10 ns )
+    clk_gen_i: clk_gen generic map( 20 ns )
     port map(
         end_sim => end_sim_i,
         clk     => clk_i

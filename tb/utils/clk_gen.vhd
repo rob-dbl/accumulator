@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity clk_gen is
+    generic ( Ts : time := 10 ns );
     port(
         end_sim : in std_logic;
         clk     : out std_logic
@@ -9,7 +10,7 @@ entity clk_gen is
 end clk_gen;
 
 architecture bhv of clk_gen is
-    constant Ts : time := 10 ns;
+    --constant Ts : time := 10 ns;
     signal clk_i : std_logic;
 begin
 

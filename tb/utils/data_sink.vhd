@@ -23,7 +23,7 @@ entity data_sink is
     CLK   : in std_logic;
     RST_n : in std_logic;
     VIN   : in std_logic;
-    DIN   : in std_logic_vector(7 downto 0);
+    DIN   : in std_logic_vector(11 downto 0);
 	  ERR	  : out std_logic);
 end data_sink;
 
@@ -36,9 +36,11 @@ begin  -- bhv
     file res_fp : text open WRITE_MODE is "results_vhd.txt"; --Output file to be written
 	    variable line_out : line;
 	
-	    file fp_in : text open READ_MODE is "../../testing/resultsc.txt"; --Input file with results from C model
-	    variable line_in : line;
-	    variable x : integer;
+	    file fp_in : text open READ_MODE is "/Users/roberto/Projects/ms_revival/lab1/_accumulator/accumulator/testing/acc_py_result.txt"; --Input file with results from C model
+	    variable line_in    : line;
+	    variable x          : integer;
+        variable data       : std_logic_vector(11 downto 0);
+        variable success    : boolean;
     
   begin  -- process wrt_file
     if RST_n = '0' then                 -- asynchronous reset (active low)
@@ -46,18 +48,23 @@ begin  -- bhv
     elsif CLK'event and CLK = '1' then  -- rising clock edge
       if (VIN = '1') then
 		-- Write DIN in file
-        write(line_out, conv_integer(signed(DIN)));
-        writeline(res_fp, line_out);
+        --write(line_out, conv_integer(signed(DIN)));
+        --writeline(res_fp, line_out);
 
 		-- Read line from resultc.txt
 		if not endfile(fp_in) then
 			readline(fp_in, line_in);
-			read(line_in, x);
+			hread(line_in, data, success);
 			
 			-- Comparing
-			if (conv_signed(x,8) /= signed(DIN)) then
-				ERR <= '1';
-			end if;			
+			--if (conv_signed(x,12) /= signed(DIN)) then
+			--	ERR <= '1';
+			--end if;		
+            if unsigned(data) = unsigned(DIN) then
+                ERR <= '0';
+            else
+                ERR <= '1';
+            end if;
 			
 		end if;
       end if;

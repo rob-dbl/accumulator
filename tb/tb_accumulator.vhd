@@ -16,7 +16,8 @@ architecture bhv of tb_acc is
             accumulate  : in std_logic;
             acc_enable  : in std_logic;
             clk, rst_n  : in std_logic;
-            y           : out std_logic_vector(Nbits-1 downto 0)
+            y           : out std_logic_vector(Nbits-1 downto 0);
+            overflow    : out std_logic
         );
     end component;
 
@@ -31,12 +32,12 @@ architecture bhv of tb_acc is
 
     signal a, b, y : std_logic_vector(7 downto 0);
     signal clk_i, end_sim_i : std_logic;
-    signal acc_i, acc_en_i, rst_i : std_logic;
+    signal acc_i, acc_en_i, rst_i, of_i : std_logic;
 
 begin
 
     -- Instantiation of the components
-    clk_gen_i: clk_gen generic map( 10 ns )
+    clk_gen_i: clk_gen generic map( 40 ns )
     port map(
         end_sim => end_sim_i,
         clk     => clk_i

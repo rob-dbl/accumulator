@@ -6,9 +6,10 @@ entity rca is
         Nbits : integer := 32
     );
     port(
-        a, b    : in std_logic_vector(Nbits-1 downto 0);
-        s       : out std_logic_vector(Nbits-1 downto 0);
-        cout    : out std_logic
+        a, b        : in std_logic_vector(Nbits-1 downto 0);
+        s           : out std_logic_vector(Nbits-1 downto 0);
+        cout        : out std_logic;
+        overflow    : out std_logic
     );
 end rca;
 
@@ -27,6 +28,7 @@ architecture structure of rca is
     end component;
 
     signal c_array : std_logic_vector(Nbits-1 downto 0);
+    signal si : std_logic_vector(Nbits-1 downto 0);
 
 begin
 
@@ -35,7 +37,7 @@ begin
         A => a(0),
         B => b(0),
         Ci => '0',
-        S   => s(0),
+        S   => si(0),
         Co  => c_array(0)
     );
 
@@ -44,10 +46,13 @@ begin
             A => a(i),
             B => b(i),
             Ci  => c_array(i-1),
-            S   => s(i),
+            S   => si(i),
             Co  => c_array(i)
         );
         end generate;
 
+    --overflow <= c_array(Nbits-1) xor c_array(Nbits-2);
+    s <= si;
+    overflow <= ((not a(Nbits-1)) and (not b(Nbits-1)) and si(Nbits-1)) or ((a(Nbits-1)) and (b(Nbits-1)) and not si(Nbits-1));
     Cout <= c_array(Nbits-1);
 end structure;

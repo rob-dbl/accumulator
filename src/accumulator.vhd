@@ -10,7 +10,8 @@ entity accumulator is
         accumulate  : in std_logic;
         acc_enable  : in std_logic;
         clk, rst_n  : in std_logic;
-        y           : out std_logic_vector(Nbits-1 downto 0)
+        y           : out std_logic_vector(Nbits-1 downto 0);
+        overflow    : out std_logic
     );
 end accumulator;
 
@@ -22,9 +23,10 @@ architecture structure of accumulator is
             Nbits : integer := 32
         );
         port(
-            a, b    : in std_logic_vector(Nbits-1 downto 0);
-            s       : out std_logic_vector(Nbits-1 downto 0);
-            cout    : out std_logic
+            a, b        : in std_logic_vector(Nbits-1 downto 0);
+            s           : out std_logic_vector(Nbits-1 downto 0);
+            cout        : out std_logic;
+            overflow    : out std_logic
         );
     end component;
 
@@ -42,6 +44,7 @@ architecture structure of accumulator is
 
     signal adder_out, mux_out, reg_out : std_logic_vector(Nbits-1 downto 0);
     signal cout : std_logic;
+    signal overflow_i : std_logic;
 
 begin
 
@@ -61,7 +64,8 @@ begin
         a       => a,
         b       => mux_out,
         s       => adder_out,
-        cout    => cout
+        cout    => cout,
+        overflow => overflow_i
     );
 
     -- Register process
@@ -72,8 +76,10 @@ begin
             if acc_enable = '1' then
                 if rst_n = '0' then 
                     reg_out <= (others=>'0');
+                    overflow <= '0';
                 else
                     reg_out <= adder_out;
+                    overflow <= overflow_i;
                 end if;
             end if;
         end if;

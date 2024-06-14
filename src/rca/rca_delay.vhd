@@ -6,9 +6,10 @@ entity rca is
         Nbits : integer := 32
     );
     port(
-        a, b    : in std_logic_vector(Nbits-1 downto 0);
-        s       : out std_logic_vector(Nbits-1 downto 0);
-        cout    : out std_logic
+        a, b        : in std_logic_vector(Nbits-1 downto 0);
+        s           : out std_logic_vector(Nbits-1 downto 0);
+        cout        : out std_logic;
+        overflow    : out std_logic
     );
 end rca;
 

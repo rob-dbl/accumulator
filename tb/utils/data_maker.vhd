@@ -14,6 +14,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
+use ieee.numeric_std.all;
 
 library std;
 use std.textio.all;
@@ -24,28 +25,25 @@ entity data_maker is
     RST_n   : in  std_logic;
 	EN		: in  std_logic; -- Used to stop the reading of the file from TB
     VOUT    : out std_logic;
-    DOUT    : out std_logic_vector(7 downto 0);             
+    DOUT    : out std_logic_vector(19 downto 0);             
     END_SIM : out std_logic);
 end data_maker;
 
 architecture bhv of data_maker is
 
-  constant tco : time := 1 ns;
+  constant tco : time := 2 ns;
 
   signal sEndSim : std_logic;
   signal END_SIM_i : std_logic_vector(0 to 10);  
 
-begin  -- bhv
-
-  H0 <= conv_std_logic_vector(53,8);		--THE COEFFICIENT VALUES TO BE ENTERED (B0)
-  H1 <= conv_std_logic_vector(53,8);		--THE COEFFICIENT VALUES TO BE ENTERED (B1)
-  H2 <= conv_std_logic_vector(-21,8);		--THE COEFFICIENT VALUES TO BE ENTERED (A1) 
+begin  
 
   rd_file: process (CLK, RST_n, EN)
   
-    file fp_in : text open READ_MODE is "../../testing/samples.txt";
-    variable line_in : line;
-    variable x : integer;
+    file fp_in          : text open READ_MODE is "/Users/roberto/Projects/ms_revival/lab1/_accumulator/accumulator/testing/acc_stimuli.txt";
+    variable line_in    : LINE;
+    variable Data       : STD_LOGIC_VECTOR(19 downto 0);
+    variable Success    : BOOLEAN;
 	
   begin  -- process rd_file
   
@@ -58,9 +56,11 @@ begin  -- bhv
 		if EN = '1' then
 		  if not endfile(fp_in) then
 		    readline(fp_in, line_in);
-		    read(line_in, x);
-		    DOUT <= conv_std_logic_vector(x, 8) after tco;
-		    VOUT <= '1' after tco;
+		    hread(line_in, Data, Success);
+		    --DOUT <= conv_std_logic_vector(x, 20) after tco;
+		    --DOUT <= std_logic_vector(to_unsigned(Data,DOUT'length));
+            DOUT <= Data after tco;
+            VOUT <= '1' after tco;
 		    sEndSim <= '0' after tco;
 		  else
 		    VOUT <= '0' after tco;        

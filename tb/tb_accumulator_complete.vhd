@@ -16,6 +16,7 @@ architecture bhv of tb_acc is
             accumulate  : in std_logic;
             acc_enable  : in std_logic;
             clk, rst_n  : in std_logic;
+            data_valid  : out std_logic;
             y           : out std_logic_vector(Nbits-1 downto 0);
             overflow    : out std_logic
         );
@@ -56,6 +57,7 @@ architecture bhv of tb_acc is
     signal dini     : std_logic_vector(11 downto 0);
     signal clk_i, end_sim_i, vouti1, vouti2 : std_logic;
     signal acc_i, acc_en_i, ext_rst_i, rst_i, of_i, err_i : std_logic;
+    signal data_valid_i, data_sink_en : std_logic;
 
 begin
 
@@ -74,7 +76,8 @@ begin
         clk         => clk_i,
         rst_n       => rst_i,
         y           => yi,
-        overflow    => of_i
+        overflow    => of_i,
+        data_valid  => data_valid_i
     );
 
     stimuli: data_maker port map (
@@ -106,11 +109,12 @@ begin
     end process;
 
     dini <= "000" & of_i & yi;
+    data_sink_en <= vouti2 and data_valid_i;
 
     comparator: data_sink port map ( 
         CLK   => clk_i,
-        RST_n => rst_i,
-        VIN   => vouti2,
+        RST_n => ext_rst_i,
+        VIN   => vouti1,
         DIN   => dini,
         ERR	  => err_i
     );

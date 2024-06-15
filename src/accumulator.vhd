@@ -10,6 +10,7 @@ entity accumulator is
         accumulate  : in std_logic;
         acc_enable  : in std_logic;
         clk, rst_n  : in std_logic;
+        data_valid  : out std_logic;
         y           : out std_logic_vector(Nbits-1 downto 0);
         overflow    : out std_logic
     );
@@ -46,6 +47,8 @@ architecture structure of accumulator is
     signal cout : std_logic;
     signal overflow_i : std_logic;
 
+    constant tco : time := 2 ns;
+
 begin
 
     -- Multiplexer
@@ -69,18 +72,22 @@ begin
     );
 
     -- Register process
+    -- Synchronous reset
     reg_process : process(clk, rst_n, acc_enable)
     begin
         if clk'event and clk = '1' then
             -- Enable has priority on acc_enable
             if acc_enable = '1' then
                 if rst_n = '0' then 
-                    reg_out <= (others=>'0');
-                    overflow <= '0';
+                    reg_out <= (others=>'0') after tco;
+                    overflow <= '0' after tco;
                 else
-                    reg_out <= adder_out;
-                    overflow <= overflow_i;
+                    reg_out <= adder_out after tco;
+                    overflow <= overflow_i after tco;
                 end if;
+                data_valid <= '1';
+            else
+                data_valid <= '0';
             end if;
         end if;
     end process;

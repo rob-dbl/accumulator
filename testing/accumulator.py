@@ -32,21 +32,35 @@ class accumulator():
         self.y = self.register
 
     def __sum(self,a : int,b : int):
+        
+        print(f"SUM OPERANDS: A = {a}, B = {b}")
         sum = a+b
 
+        conv_sum = int_to_ca2(sum,2)
         mask = (1 << self.nBits)-1
-        masked_sum = sum & mask
+        masked_conv_sum = conv_sum & mask
+        #masked_sum = sum & mask
+        #masked_sum = int_to_ca2(masked_sum,2)
+        print(f"SUM RESULT: S = {sum}, MASK = {mask}, MASKED_S = {masked_conv_sum}")
+
+        min = -2**(nBits-1)
+        max = 2**(nBits-1)-1
+        #print(f"MIN,MAX: {min},{max}")
+        
 
         if (sum < (-2**(nBits-1)) or sum > (2**(nBits-1)-1)):
             self.overflow = 1
         else:
             self.overflow = 0
-        return masked_sum, self.overflow
+        return ca2_to_int(masked_conv_sum,nBits), self.overflow
 
 
     def single_run(self, a, b, accumulate : bool, acc_enable : bool, rst_n : bool):
         
         print("------------------------------")
+        print(f"A = {a}")
+        print(f"B = {b}")
+        
         if not rst_n:
             print("RESET")
             self.register, self.overflow = 0,0
@@ -65,10 +79,9 @@ class accumulator():
             else:
                 print("DISABLED")
         
-        print(f"A = {a}")
-        print(f"B = {b}")
+        
 
-        hex_value = f"{int_to_hex(self.overflow,1)}{ int_to_ca2_hex(self.register,math.ceil(nBits/4))}"
+        hex_value = f"{int_to_hex(self.overflow,1)}{int_to_ca2_hex(self.register,math.ceil(nBits/4))}"
         print(f"A+B = {self.register}\tOF = {self.overflow}\t{hex_value}")
         
         return hex_value
@@ -85,7 +98,7 @@ class testVector():
             self.b_i = bi
             return        
         self.a_i, self.b_i = self.generateRandomInputs(nBits)
-        print(f"{nBits},{self.a_i},{self.b_i}")
+        #print(f"{nBits},{self.a_i},{self.b_i}")
         self.hex_vector = self.printHex()
         #return self.getValues()
 
@@ -105,7 +118,7 @@ class testVector():
         vector = int_to_hex(int(control_vector,2),1)
         #print(control_vector + '\t' + str(int(control_vector)) + '\t' + vector)
 
-        print(f"{self.a_i},{self.b_i}\t\t{int_to_ca2_hex(self.a_i,math.ceil(nBits/4))},{int_to_ca2_hex(self.b_i,math.ceil(nBits/4))}")
+        #print(f"{self.a_i},{self.b_i}\t\t{int_to_ca2_hex(self.a_i,math.ceil(nBits/4))},{int_to_ca2_hex(self.b_i,math.ceil(nBits/4))}")
         
         vector += f"{int_to_ca2_hex(self.a_i,math.ceil(nBits/4))}{int_to_ca2_hex(self.b_i,math.ceil(nBits/4))}"
         return vector
@@ -125,6 +138,21 @@ def int_to_ca2(num: int, nDigits : int):
         num = abs(num)
         return bit_not(num,nDigits*4)+1
     return num
+
+def ca2_to_int(num: int, nBits: int):
+    sum = 0
+    vector = int_to_bin(num, nBits)
+    print(vector)
+    for i in range(len(vector)-1,1):
+        #print(string_name[element])
+        ch = vector[i]
+        if(ch == "1"):
+            num += 2**(len(vector) - i)
+    
+    if(vector[0] == "1"):
+        num -= 2**(len(vector))
+    return num
+
 
 def int_to_ca2_hex(num : int, nDigits : int):
     num = int_to_ca2(num, nDigits)

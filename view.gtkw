@@ -1,0 +1,66 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Sat Jun 15 12:52:38 2024
+[*]
+[dumpfile] "/Users/roberto/Projects/ms_revival/lab1/_accumulator/accumulator/wave.ghw"
+[dumpfile_mtime] "Sat Jun 15 11:35:55 2024"
+[dumpfile_size] 5194
+[savefile] "/Users/roberto/Projects/ms_revival/lab1/_accumulator/accumulator/view.gtkw"
+[timestart] 36810000
+[size] 1000 600
+[pos] -1 -1
+*-24.110756 70000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.tb_acc.
+[treeopen] top.tb_acc.comparator.
+[treeopen] top.tb_acc.dut.
+[treeopen] top.tb_acc.dut.mux.
+[sst_width] 193
+[signals_width] 203
+[sst_expanded] 1
+[sst_vpaned_height] 167
+@28
+top.tb_acc.clk_i
+@800201
+-Mux
+@23
+#{top.tb_acc.dut.mux.a[7:0]} top.tb_acc.dut.mux.a[7] top.tb_acc.dut.mux.a[6] top.tb_acc.dut.mux.a[5] top.tb_acc.dut.mux.a[4] top.tb_acc.dut.mux.a[3] top.tb_acc.dut.mux.a[2] top.tb_acc.dut.mux.a[1] top.tb_acc.dut.mux.a[0]
+#{top.tb_acc.dut.mux.b[7:0]} top.tb_acc.dut.mux.b[7] top.tb_acc.dut.mux.b[6] top.tb_acc.dut.mux.b[5] top.tb_acc.dut.mux.b[4] top.tb_acc.dut.mux.b[3] top.tb_acc.dut.mux.b[2] top.tb_acc.dut.mux.b[1] top.tb_acc.dut.mux.b[0]
+#{top.tb_acc.dut.mux.y[7:0]} top.tb_acc.dut.mux.y[7] top.tb_acc.dut.mux.y[6] top.tb_acc.dut.mux.y[5] top.tb_acc.dut.mux.y[4] top.tb_acc.dut.mux.y[3] top.tb_acc.dut.mux.y[2] top.tb_acc.dut.mux.y[1] top.tb_acc.dut.mux.y[0]
+@1000201
+-Mux
+@800200
+-Adder
+@22
+#{top.tb_acc.dut.adder.a[7:0]} top.tb_acc.dut.adder.a[7] top.tb_acc.dut.adder.a[6] top.tb_acc.dut.adder.a[5] top.tb_acc.dut.adder.a[4] top.tb_acc.dut.adder.a[3] top.tb_acc.dut.adder.a[2] top.tb_acc.dut.adder.a[1] top.tb_acc.dut.adder.a[0]
+#{top.tb_acc.dut.adder.b[7:0]} top.tb_acc.dut.adder.b[7] top.tb_acc.dut.adder.b[6] top.tb_acc.dut.adder.b[5] top.tb_acc.dut.adder.b[4] top.tb_acc.dut.adder.b[3] top.tb_acc.dut.adder.b[2] top.tb_acc.dut.adder.b[1] top.tb_acc.dut.adder.b[0]
+#{top.tb_acc.dut.adder.s[7:0]} top.tb_acc.dut.adder.s[7] top.tb_acc.dut.adder.s[6] top.tb_acc.dut.adder.s[5] top.tb_acc.dut.adder.s[4] top.tb_acc.dut.adder.s[3] top.tb_acc.dut.adder.s[2] top.tb_acc.dut.adder.s[1] top.tb_acc.dut.adder.s[0]
+@28
+top.tb_acc.dut.adder.overflow
+@1000200
+-Adder
+@800200
+-Output
+@22
+#{top.tb_acc.ai[7:0]} top.tb_acc.ai[7] top.tb_acc.ai[6] top.tb_acc.ai[5] top.tb_acc.ai[4] top.tb_acc.ai[3] top.tb_acc.ai[2] top.tb_acc.ai[1] top.tb_acc.ai[0]
+#{top.tb_acc.bi[7:0]} top.tb_acc.bi[7] top.tb_acc.bi[6] top.tb_acc.bi[5] top.tb_acc.bi[4] top.tb_acc.bi[3] top.tb_acc.bi[2] top.tb_acc.bi[1] top.tb_acc.bi[0]
+@28
+top.tb_acc.of_i
+@1000200
+-Output
+@28
+top.tb_acc.err_i
+@22
+#{top.tb_acc.dini[11:0]} top.tb_acc.dini[11] top.tb_acc.dini[10] top.tb_acc.dini[9] top.tb_acc.dini[8] top.tb_acc.dini[7] top.tb_acc.dini[6] top.tb_acc.dini[5] top.tb_acc.dini[4] top.tb_acc.dini[3] top.tb_acc.dini[2] top.tb_acc.dini[1] top.tb_acc.dini[0]
+#{top.tb_acc.comparator.din_ref[11:0]} top.tb_acc.comparator.din_ref[11] top.tb_acc.comparator.din_ref[10] top.tb_acc.comparator.din_ref[9] top.tb_acc.comparator.din_ref[8] top.tb_acc.comparator.din_ref[7] top.tb_acc.comparator.din_ref[6] top.tb_acc.comparator.din_ref[5] top.tb_acc.comparator.din_ref[4] top.tb_acc.comparator.din_ref[3] top.tb_acc.comparator.din_ref[2] top.tb_acc.comparator.din_ref[1] top.tb_acc.comparator.din_ref[0]
+@28
+top.tb_acc.rst_i
+top.tb_acc.ext_rst_i
+top.tb_acc.acc_i
+@22
+#{top.tb_acc.dut.mux_out[7:0]} top.tb_acc.dut.mux_out[7] top.tb_acc.dut.mux_out[6] top.tb_acc.dut.mux_out[5] top.tb_acc.dut.mux_out[4] top.tb_acc.dut.mux_out[3] top.tb_acc.dut.mux_out[2] top.tb_acc.dut.mux_out[1] top.tb_acc.dut.mux_out[0]
+@28
+top.tb_acc.dut.mux.sel
+top.tb_acc.acc_en_i
+[pattern_trace] 1
+[pattern_trace] 0

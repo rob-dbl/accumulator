@@ -1,0 +1,192 @@
+------------------------------
+A = 32
+B = -86
+RESET
+A+B = 0	OF = 0	000
+120aa	000
+------------------------------
+A = 34
+B = -32
+SUM
+SUM OPERANDS: A = 34, B = -32
+SUM RESULT: S = 2, MASK = 255, MASKED_S = 2
+00000010
+DISABLED
+A+B = 0	OF = 0	000
+422e0	000
+------------------------------
+A = -43
+B = 118
+SUM
+SUM OPERANDS: A = -43, B = 118
+SUM RESULT: S = 75, MASK = 255, MASKED_S = 75
+01001011
+DISABLED
+A+B = 0	OF = 0	000
+4d576	000
+------------------------------
+A = 73
+B = 112
+SUM
+SUM OPERANDS: A = 73, B = 112
+SUM RESULT: S = 185, MASK = 255, MASKED_S = 185
+10111001
+ENABLED
+A+B = -71	OF = 1	1b9
+54970	1b9
+------------------------------
+A = -121
+B = -106
+SUM
+SUM OPERANDS: A = -121, B = -106
+SUM RESULT: S = -227, MASK = 255, MASKED_S = 29
+00011101
+ENABLED
+A+B = 29	OF = 1	11d
+58796	11d
+------------------------------
+A = -38
+B = 118
+SUM
+SUM OPERANDS: A = -38, B = 118
+SUM RESULT: S = 80, MASK = 255, MASKED_S = 80
+01010000
+ENABLED
+A+B = 80	OF = 0	050
+5da76	050
+------------------------------
+A = -128
+B = 18
+ACCUMULATE
+SUM OPERANDS: A = -128, B = 80
+SUM RESULT: S = -48, MASK = 255, MASKED_S = 208
+11010000
+ENABLED
+A+B = -48	OF = 0	0d0
+78012	0d0
+------------------------------
+A = -28
+B = -10
+ACCUMULATE
+SUM OPERANDS: A = -28, B = -48
+SUM RESULT: S = -76, MASK = 255, MASKED_S = 180
+10110100
+ENABLED
+A+B = -76	OF = 0	0b4
+7e4f6	0b4
+------------------------------
+A = 58
+B = -125
+SUM
+SUM OPERANDS: A = 58, B = -125
+SUM RESULT: S = -67, MASK = 255, MASKED_S = 189
+10111101
+ENABLED
+A+B = -67	OF = 0	0bd
+53a83	0bd
+------------------------------
+A = 55
+B = 109
+ACCUMULATE
+SUM OPERANDS: A = 55, B = -67
+SUM RESULT: S = -12, MASK = 255, MASKED_S = 244
+11110100
+ENABLED
+A+B = -12	OF = 0	0f4
+7376d	0f4
+------------------------------
+A = 12
+B = 25
+SUM
+SUM OPERANDS: A = 12, B = 25
+SUM RESULT: S = 37, MASK = 255, MASKED_S = 37
+00100101
+ENABLED
+A+B = 37	OF = 0	025
+50c19	025
+------------------------------
+A = -6
+B = -115
+ACCUMULATE
+SUM OPERANDS: A = -6, B = 37
+SUM RESULT: S = 31, MASK = 255, MASKED_S = 31
+00011111
+ENABLED
+A+B = 31	OF = 0	01f
+7fa8d	01f
+------------------------------
+A = 37
+B = -125
+RESET
+A+B = 0	OF = 0	000
+32583	000
+------------------------------
+A = 57
+B = -77
+ACCUMULATE
+SUM OPERANDS: A = 57, B = 0
+SUM RESULT: S = 57, MASK = 255, MASKED_S = 57
+00111001
+ENABLED
+A+B = 57	OF = 0	039
+739b3	039
+------------------------------
+A = 93
+B = 37
+ACCUMULATE
+SUM OPERANDS: A = 93, B = 57
+SUM RESULT: S = 150, MASK = 255, MASKED_S = 150
+10010110
+ENABLED
+A+B = -106	OF = 1	196
+75d25	196
+------------------------------
+A = -52
+B = 33
+ACCUMULATE
+SUM OPERANDS: A = -52, B = -106
+SUM RESULT: S = -158, MASK = 255, MASKED_S = 98
+01100010
+ENABLED
+A+B = 98	OF = 1	162
+7cc21	162
+------------------------------
+A = 108
+B = 42
+ACCUMULATE
+SUM OPERANDS: A = 108, B = 98
+SUM RESULT: S = 206, MASK = 255, MASKED_S = 206
+11001110
+ENABLED
+A+B = -50	OF = 1	1ce
+76c2a	1ce
+------------------------------
+A = -62
+B = -9
+ACCUMULATE
+SUM OPERANDS: A = -62, B = -50
+SUM RESULT: S = -112, MASK = 255, MASKED_S = 144
+10010000
+ENABLED
+A+B = -112	OF = 0	090
+7c2f7	090
+------------------------------
+A = -39
+B = 77
+SUM
+SUM OPERANDS: A = -39, B = 77
+SUM RESULT: S = 38, MASK = 255, MASKED_S = 38
+00100110
+ENABLED
+A+B = 38	OF = 0	026
+5d94d	026
+------------------------------
+A = 89
+B = -45
+SUM
+SUM OPERANDS: A = 89, B = -45
+SUM RESULT: S = 44, MASK = 255, MASKED_S = 44
+00101100
+ENABLED
+A+B = 44	OF = 0	02c
+559d3	02c

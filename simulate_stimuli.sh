@@ -13,7 +13,7 @@ tb/utils/data_sink.vhd \
 tb/tb_accumulator_complete.vhd
 
 ghdl -e -fsynopsys tb_acc 
-ghdl -r -fsynopsys tb_acc --wave=wave.ghw --stop-time=200ns
+ghdl -r -fsynopsys tb_acc --wave=wave.ghw --stop-time=400ns
 open -a gtkwave wave.ghw
 
 rm work-obj93.cf

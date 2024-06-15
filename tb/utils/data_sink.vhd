@@ -29,6 +29,8 @@ end data_sink;
 
 architecture bhv of data_sink is
 
+    signal din_ref : std_logic_vector(11 downto 0);
+
 begin  -- bhv
   	
   wrt_file: process (CLK, RST_n)
@@ -45,6 +47,7 @@ begin  -- bhv
   begin  -- process wrt_file
     if RST_n = '0' then                 -- asynchronous reset (active low)
       ERR <= '0';
+      din_ref <= (others=>'0');
     elsif CLK'event and CLK = '1' then  -- rising clock edge
       if (VIN = '1') then
 		-- Write DIN in file
@@ -59,8 +62,11 @@ begin  -- bhv
 			-- Comparing
 			--if (conv_signed(x,12) /= signed(DIN)) then
 			--	ERR <= '1';
-			--end if;		
-            if unsigned(data) = unsigned(DIN) then
+			--end if;	
+            
+            din_ref <= data after 2 ns;
+
+            if unsigned(din_ref) = unsigned(DIN) then
                 ERR <= '0';
             else
                 ERR <= '1';

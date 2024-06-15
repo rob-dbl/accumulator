@@ -3,7 +3,7 @@
 A Python model of the accumulator was designed to ease the testing process of the unit. The file `accumulator.py` includes:
 1. The model of the unit, defined as the class `accumulator`;
 2. A class for easily generate and collect test vector, called `TestVector`;
-3. The ‘main()‘ definining the test procedure, where vectors are generated and applied to the `accumulator` object.
+3. The `main()` definining the test procedure, where vectors are generated and applied to the `accumulator` object.
 
 Stimuli and responses are translated into hexadecimal vector and saved into two `.txtv files, in this case `acc_stimulu.txt` and `acc_py_results.txt`.
 

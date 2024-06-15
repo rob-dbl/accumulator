@@ -9,6 +9,10 @@
 ## About <a name = "about"></a>
 
 This repository contains a simple structural accumulator described and tested using VHDL. Simulation was carried out using GHDL. Main purpose of the project was to regain practice with VHDL using free EDA tools for basic analysis and verification.
+In particular, it was possible to:
++ Practice with digital design techniques and description using VHDL
++ Practice with GHDL simulation tool, along with GTKWave for waveform visualisation
++ Develop a strategy allowing an easy verification of digital designs, with software model written in Python and complex testbench for automatic error detection.
 
 ## Structure and functionality<a name = "structure"></a>
 

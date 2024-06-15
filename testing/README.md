@@ -11,4 +11,4 @@ Stimuli and responses are translated into hexadecimal vector and saved into two 
   <img src="https://github.com/rob-dbl/accumulator/blob/main/others/software_model.png" width="480">
 </p>
 
-The two files generated here are used by the complete testbench to automate the simulation process and compare the output from the unit under test with the intended ones.
+The two generated files are used by the complete testbench to automate the simulation process, comparing the outputs of the two models and analysing discrepancies between them.

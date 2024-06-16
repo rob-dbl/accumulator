@@ -14,6 +14,12 @@ In particular, it was possible to:
 + Practice with GHDL simulation tool, along with GTKWave for waveform visualisation
 + Develop a strategy allowing an easy verification of digital designs, with software model written in Python and complex testbench for automatic error detection.
 
+This repository is organized as follows:
++ `src/` includes the VHDL files describing the unit;
++ `tb/` includes the description of the testbenches and the modules composing them;
++ `testing/` includes the software model of the module and the output files it generates, used for the validation of the VHDL model;
++ `others/` includes the pictures used for documentation and linked into README files. 
+
 ## Structure and functionality<a name = "structure"></a>
 
 The picture below represents the basic structure of the accumulator. It is composed of three main blocks:
